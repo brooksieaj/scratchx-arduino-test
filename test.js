@@ -418,11 +418,11 @@
     hw.val = val;
   };
 
-  ext.helloWorld = function(led, val) {
+  ext.helloWorld = function(led) {
     var hw = hwList.search(led);
     if (!hw) return;
-    analogWrite(hw.pin, val);
-    hw.val = val;
+    analogWrite(hw.pin, 100);
+    hw.val = 100;
   };
   
   ext.changeLED = function(led, val) {
@@ -559,7 +559,7 @@
       ['-'],
       [' ', 'set %m.leds %m.outputs', 'digitalLED', 'led A', 'on'],
       [' ', 'set %m.leds brightness to %n%', 'setLED', 'led A', 100],
-      [' ', 'set %m.leds brightness to %n%', 'helloWorld', 'led A', 100],
+      [' ', 'say hello world on %m.leds', 'helloWorld', 'led A'],
       [' ', 'change %m.leds brightness by %n%', 'changeLED', 'led A', 20],
       ['-'],
       [' ', 'rotate %m.servos to %n degrees', 'rotateServo', 'servo A', 180],
