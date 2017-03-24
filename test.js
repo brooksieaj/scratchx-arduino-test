@@ -271,7 +271,7 @@
   
   function helloWorld(pin)
   {
-    ext.setLED(pin, 'on');
+    
   }
 
   function pinMode(pin, mode) {
@@ -425,7 +425,15 @@
   
   ext.helloWorld = function(led)
   {
-    helloWorld();
+    var hw = hwList.search(led);
+    if (!hw) return;
+    analogWrite(hw.pin, 100);
+    delay(1000);
+    analogWrite(hw.pin, 0);
+    delay(1000);
+    analogWrite(hw.pin, 100);
+    delay(1000);
+    hw.val = val;
   };
 
   ext.changeLED = function(led, val) {
