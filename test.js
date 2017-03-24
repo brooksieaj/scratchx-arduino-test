@@ -268,6 +268,11 @@
       }
     }
   }
+  
+  function helloWorld(pin)
+  {
+    ext.setLED(pin, 'on');
+  }
 
   function pinMode(pin, mode) {
     var msg = new Uint8Array([PIN_MODE, pin, mode]);
@@ -417,6 +422,11 @@
     analogWrite(hw.pin, val);
     hw.val = val;
   };
+  
+  ext.helloWorld = function(led)
+  {
+    helloWorld();
+  };
 
   ext.changeLED = function(led, val) {
     var hw = hwList.search(led);
@@ -552,6 +562,7 @@
       ['-'],
       [' ', 'set %m.leds %m.outputs', 'digitalLED', 'led A', 'on'],
       [' ', 'set %m.leds brightness to %n%', 'setLED', 'led A', 100],
+      [' ', 'say hello world', 'helloWorld', 'led A', 100],
       [' ', 'change %m.leds brightness by %n%', 'changeLED', 'led A', 20],
       ['-'],
       [' ', 'rotate %m.servos to %n degrees', 'rotateServo', 'servo A', 180],
@@ -593,7 +604,7 @@
   var descriptor = {
     blocks: blocks[lang],
     menus: menus[lang],
-    url: 'http://khanning.github.io/scratch-arduino-extension'
+    url: 'http://brooksieaj.github.io/scratchx-arduino-test'
   };
 
   ScratchExtensions.register('Arduino', descriptor, ext, {type:'serial'});
