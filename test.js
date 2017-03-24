@@ -420,9 +420,15 @@
 
   ext.helloWorld = function(led) {
     var hw = hwList.search(led);
+    var val = 'on';
     if (!hw) return;
-    analogWrite(hw.pin, HIGH);
-    hw.val = 255;
+    if (val == 'on') {
+      digitalWrite(hw.pin, HIGH);
+      hw.val = 255;
+    } else if (val == 'off') {
+      digitalWrite(hw.pin, LOW);
+      hw.val = 0;
+    }
   };
   
   ext.changeLED = function(led, val) {
