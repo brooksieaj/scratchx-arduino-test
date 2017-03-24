@@ -421,8 +421,8 @@
   ext.helloWorld = function(led) {
     var hw = hwList.search(led);
     if (!hw) return;
-    analogWrite(hw.pin, 100);
-    hw.val = 100;
+    analogWrite(hw.pin, HIGH);
+    hw.val = 255;
   };
   
   ext.changeLED = function(led, val) {
